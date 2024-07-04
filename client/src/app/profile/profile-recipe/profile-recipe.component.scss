@@ -1,0 +1,18 @@
+.recipes {
+    padding: 0 40px;
+}
+
+.recipes-top {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recipes-top button {
+    background-color: #345333;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    cursor: pointer;
+}

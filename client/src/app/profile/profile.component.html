@@ -1,0 +1,36 @@
+<div class="profile">
+  <div class="profile-info">
+    <h2>Abondance Kazadi</h2>
+    <p>Membre dépuis Mais 2024</p>
+  </div>
+
+  <div class="card">
+    <a routerLink="/profile">
+      <div class="profile-card">
+        <i class="fa-solid fa-user"></i>
+        <h2>Espaces personnel</h2>
+        <p>Modifier mes informations personnelles</p>
+      </div>
+    </a>
+
+    <a routerLink="recipes">
+      <div class="profile-card">
+        <i class="fa-solid fa-utensils"></i>
+        <h2>Mes recettes</h2>
+        <p>Ajouter, modifier et supprimer mes recettes</p>
+      </div>
+    </a>
+
+    <a routerLink="/profile">
+      <div class="profile-card">
+        <i class="fa-solid fa-wrench"></i>
+        <h2>Paramètres</h2>
+        <p>Compléter et modifier mes informations privées et préférences</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="logout" (click)="logoutCustomer()">
+    <button>Se déconnecter</button>
+  </div>
+</div>
