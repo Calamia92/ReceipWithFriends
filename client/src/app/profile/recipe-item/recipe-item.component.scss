@@ -1,0 +1,42 @@
+.recipes-items {
+    border: 1px solid rgb(219, 219, 219);
+    padding: 15px 30px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    font-style: normal;
+}
+
+.recipes {
+    height: 120px;
+    display: flex;
+    width: max-content;
+}
+
+.recipes-image {
+    width: 120px;   
+}
+
+.recipes-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.recipes-details {
+    margin: 5px 20px;
+}
+
+.recipes-details p {
+    margin: 10px 0;
+}
+
+.recipes-other {
+    margin: 5px 0;
+}
+
+.stars {
+    color: yellow;
+    font-size: 30px;
+}

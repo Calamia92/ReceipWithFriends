@@ -1,0 +1,42 @@
+<div class="form">
+  <div class="form-img">
+    <img
+      src="https://graphicriver.img.customer.envatousercontent.com/files/214036587/preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=8f7d7e70cb4f57bb85ebf792a88c30b0"
+      alt=""
+    />
+  </div>
+
+  <div class="form-container">
+    <h2>Inscription</h2>
+    <div class="form-section">
+      <div class="form-group">
+        <input
+          id="login"
+          placeholder="Votre email"
+          type="email"
+          [formControl]="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          id="password"
+          placeholder="Votre mot de passe"
+          type="password"
+          [formControl]="password"
+        />
+      </div>
+
+      <button class="submit-button" type="button" (click)="registerCustomer()">
+        Inscription
+      </button>
+
+      <div class="other">
+        <span
+          >Vous avez un compte ?
+          <a routerLink="/login">Se connecter</a></span
+        >
+      </div>
+    </div>
+  </div>
+</div>
