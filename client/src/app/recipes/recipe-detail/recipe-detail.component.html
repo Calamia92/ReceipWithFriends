@@ -1,30 +1,24 @@
-<div class="recipes">
+<div class="recipes" *ngIf="recipe">
   <div class="recipes-top">
     <div class="recipes-image">
-      <img [src]="image" alt="" />
+      <img [src]="image" alt="Recipe Image" />
     </div>
 
     <div class="recipe-info">
-      <h2>Le nom de la recette</h2>
-      <p>Auteur : <span> Nom de l'auteur</span></p>
-      <p>Type : <span> Le type de la recette</span></p>
-      <p>Ingrédients : <span> La liste d'ingrédients</span></p>
-      <p>Difficulté : <span> La difficulté</span></p>
-      <p>Nombre de personnes : <span> La nombre de personne</span></p>
-      <p>Temps de préparation : <span> Le temps de préparation</span></p>
-      <p>Date de publication : <span>le 27/01/2024</span> </p>
-      <p> Avis : <span class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</span></p>
+      <h2>{{ recipe.nom }}</h2>
+      <p>Auteur : <span>{{ recipe.userId }}</span></p>
+      <p>Type : <span>{{ recipe.type }}</span></p>
+      <p>Ingrédients : <span>{{ recipe.ingredient }}</span></p>
+      <p>Difficulté : <span>{{ recipe.difficulte }}</span></p>
+      <p>Nombre de personnes : <span>{{ recipe.nmbrDePersonne }}</span></p>
+      <p>Temps de préparation : <span>{{ recipe.tempsDePreparation }}</span></p>
+      <p>Date de publication : <span>{{ recipe.createdAt  }}</span></p>
+      <p>Avis : <span class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</span></p>
     </div>
   </div>
 
   <div class="recipes-detail">
     <h2>Description</h2>
-    <p>
-      Ceci est destinée à la description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi facere harum
-      itaque voluptatum unde adipisci totam sit consectetur. Nulla aut deleniti
-      expedita possimus, eius aperiam saepe magni dicta nam dolorem illum
-      ratione excepturi quaerat. Quisquam odio tempora blanditiis cupiditate
-      aliquid?
-    </p>
+    <p>{{ recipe.recette_detail }}</p>
   </div>
 </div>
