@@ -20,6 +20,24 @@
 
       <div class="form-group">
         <input
+          id="nom"
+          placeholder="Votre nom"
+          type="text"
+          [formControl]="lastname"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          id="firstname"
+          placeholder="Votre prenom"
+          type="text"
+          [formControl]="firstname"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
           id="telephone"
           placeholder="Votre téléphone"
           type="text"
