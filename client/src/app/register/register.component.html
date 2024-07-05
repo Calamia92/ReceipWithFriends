@@ -11,7 +11,7 @@
     <div class="form-section">
       <div class="form-group">
         <input
-          id="login"
+          id="email"
           placeholder="Votre email"
           type="email"
           [formControl]="email"
@@ -20,11 +20,26 @@
 
       <div class="form-group">
         <input
+          id="telephone"
+          placeholder="Votre téléphone"
+          type="text"
+          [formControl]="telephone"
+        />
+      </div>
+
+      <div class="form-group password">
+        <input
           id="password"
+          [type]="passwordHidden ? 'password' : 'text'"
           placeholder="Votre mot de passe"
-          type="password"
           [formControl]="password"
         />
+        <i
+          (click)="viewPassword()"
+          [ngClass]="
+            passwordHidden ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'
+          "
+        ></i>
       </div>
 
       <button class="submit-button" type="button" (click)="registerCustomer()">
@@ -33,8 +48,7 @@
 
       <div class="other">
         <span
-          >Vous avez un compte ?
-          <a routerLink="/login">Se connecter</a></span
+          >Vous avez un compte ? <a routerLink="/login">Se connecter</a></span
         >
       </div>
     </div>
