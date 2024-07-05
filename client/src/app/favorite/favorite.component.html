@@ -1,0 +1,16 @@
+<div class="favorites">
+  <div class="favotite-title">
+    <h2>MES FAVORIS</h2>
+  </div>
+
+  <div class="favorites-items">
+    @for (favorite of favorites; track $index) {
+    <app-favorite-card [favorite]="favorite"></app-favorite-card>
+    }@empty {
+    <div class="favorites-empty">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <p>Vous avez aucun favoris</p>
+    </div>
+    }
+  </div>
+</div>
