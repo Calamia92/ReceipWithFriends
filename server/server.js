@@ -1,17 +1,46 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
-var mongoose_1 = require("mongoose");
-var dotenv_1 = require("dotenv");
-dotenv_1.default.config();
-var app = (0, express_1.default)();
-var port = process.env.PORT || '3000';
-mongoose_1.default.connect(process.env.DATABASE_URL, {})
-    .then(function () { return console.log("MongoDB connected successfully"); })
-    .catch(function (err) { return console.error("MongoDB connection error:", err); });
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+const express = require('express');
+
+// Import routes
+const recipeRoutes = require('./routes/recipes.routes');
+const commentRoutes = require('./routes/comments.routes');
+const favoriteRoutes = require('./routes/favorites.routes');
+const userRoutes = require('./routes/user.routes');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+require('dotenv').config({ path: './config/.env' })
+require('./config/db');
+
+const {checkUser, requireAuth} = require('./middleware/auth.middleware');
+const app = express();
+
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+
+// jwt
+app.get('*', checkUser);
+app.get('/jwtid', requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user._id)
 });
-app.listen(port, function () {
-    console.log("Server running on http://localhost:".concat(port));
+
+
+
+
+//Routes
+app.use('/api/user', userRoutes);
+
+
+
+// Use routes
+app.use('/api/recipes', recipeRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/favorites', favoriteRoutes);
+
+
+
+//server
+app.listen(process.env.PORT, () => {
+    console.log(`Écoute sur le port ${process.env.PORT}`);
 });
