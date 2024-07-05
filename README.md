@@ -1,7 +1,5 @@
 ### README du projet en Angular et Node.js
-
 #### Description
-Ce fichier README offre un aperçu du projet développé avec Angular et Node.js, spécifiant les versions utilisées et les membres de l'équipe impliqués.
 
 #### Environnement de développement
 - **Angular CLI:** 18.0.7
@@ -13,7 +11,7 @@ Ce fichier README offre un aperçu du projet développé avec Angular et Node.js
 - **Sarah:** Développeuse back-end
 - **Nahida:** Développeuse back-end
 - **Yassine:** Développeur back-end
-- **Abondance:** Développeuse front-end
+- **Abondance:** Développeur front-end
 - **Boubaker:** Gestion de Git, base de données et contributions en front-end
 
 #### Structure du projet
