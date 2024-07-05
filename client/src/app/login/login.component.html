@@ -11,13 +11,17 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group password">
         <input
           id="password"
+          [type]="passwordHidden ? 'password' : 'text'"
           placeholder="Votre mot de passe"
-          type="password"
           [formControl]="password"
         />
+        <i
+          (click)="viewPassword()"
+          [ngClass]=" passwordHidden ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
+        ></i>
       </div>
 
       <button class="submit-button" type="button" (click)="loginCustomer()">

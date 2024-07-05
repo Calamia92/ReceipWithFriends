@@ -5,7 +5,7 @@
 
   <div class="recipe">
     @for (recipe of recipes; track $index) {
-        <app-recipe-card [name]="recipe.name" [image]="recipe.imagePath"></app-recipe-card>
+        <app-recipe-card [name]="recipe.name" [image]="recipe.imagePath" [id]="recipe.id"></app-recipe-card>
     }
   </div>
 </div>

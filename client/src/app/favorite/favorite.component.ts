@@ -16,7 +16,7 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit(): void {
     this.favorites = [
-      // {id : 1, name : "Poulet à la moutarde", date : "27/05/2°24"}
+      {id : 1, name : "Poulet à la moutarde", date : "27/05/2°24"}
     ];
   }
 }
