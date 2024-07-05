@@ -1,0 +1,17 @@
+<div class="recipe-card">
+  <a [routerLink]="'/recipe/' + id">
+    <div class="card-image">
+      <img [src]="image" [alt]="imageAlt" />
+    </div>
+
+    <div class="card-title">
+      <p>{{ name }}</p>
+      <small>Le 27/01/2024</small>
+    </div>
+  </a>
+
+  <i
+    (click)="onAddFavorite(name)"
+    [class]="isFavorite ? 'fa-solid fa-heart blue' : 'fa-regular fa-heart'"
+  ></i>
+</div>

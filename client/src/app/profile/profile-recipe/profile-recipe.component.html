@@ -1,0 +1,11 @@
+<div class="recipes">
+    <div class="recipes-top">
+        <h2>Mes recettes : <span>{{ count }}</span></h2>
+
+        <button>Ajouter une recette</button>
+    </div>
+
+    @for (recipe of recipes; track $index) {
+        <app-recipe-item [recipe]="recipe"></app-recipe-item>
+    }
+</div>
