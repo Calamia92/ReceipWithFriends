@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,9 +11,25 @@ import { RouterLink } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  data : any | undefined;
+
+  constructor(private userService : UserService, private router: Router){};
+
+  ngOnInit(): void {
+    this.data = this.userService.getUser().then((resolve) => {
+      if(!resolve){
+        this.router.navigate(['/login']).then(() => {
+          location.reload();
+        });
+      }
+    });
+  }
 
   logoutCustomer(){
-    // déconnecter l'utilisateur
+    this.userService.logoutCustomer();
+    this.router.navigate(['/login']).then(() => {
+      location.reload();
+    });
   }
 }
