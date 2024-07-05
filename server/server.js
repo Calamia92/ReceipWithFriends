@@ -12,12 +12,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config({ path: './config/.env' });
 require('./config/db');
 
-<<<<<<< HEAD
 const { checkUser, requireAuth } = require('./middleware/auth.middleware');
-=======
-
-const {checkUser, requireAuth} = require('./middleware/auth.middleware');
->>>>>>> boubaker
 const app = express();
 
 

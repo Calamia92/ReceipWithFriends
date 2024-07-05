@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RecetteService {
-  private apiUrl: string = 'http://localhost:8088'; // Adjust URL as per your backend setup
+  private apiUrl: string = 'http://localhost:8088'; 
 
   constructor() { }
 

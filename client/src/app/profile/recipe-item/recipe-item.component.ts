@@ -1,22 +1,29 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+export interface Recipe {
+  name: string;
+  detail: string;
+  date: string;
+}
+
 @Component({
   selector: 'app-recipe-item',
   standalone: true,
   imports: [],
   templateUrl: './recipe-item.component.html',
-  styleUrl: './recipe-item.component.scss'
+  styleUrls: ['./recipe-item.component.scss']
 })
 export class RecipeItemComponent implements OnInit {
-  // à remplacer par les datas du service
-  @Input() recipe : any | undefined;
-  name : String | undefined;
-  detail : String | undefined;
-  date : String | undefined;
+  @Input() recipe: Recipe | undefined;
+  name: string | undefined;
+  detail: string | undefined;
+  date: string | undefined;
 
   ngOnInit(): void {
-    this.name = this.recipe.name;
-    this.detail = this.recipe.detail;
-    this.date = this.recipe.date;
+    if (this.recipe) {
+      this.name = this.recipe.name;
+      this.detail = this.recipe.detail;
+      this.date = this.recipe.date;
+    }
   }
 }

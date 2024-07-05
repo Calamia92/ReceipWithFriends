@@ -1,28 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeItemComponent } from '../recipe-item/recipe-item.component';
+import { RecetteService } from '../../../services/recette.service';
+import { UserService } from '../../../services/user.service';
+import { Recipe } from '../recipe-item/recipe-item.component';
 
 @Component({
   selector: 'app-profile-recipe',
   standalone: true,
-  imports: [
-    RecipeItemComponent
-  ],
+  imports: [RecipeItemComponent],
   templateUrl: './profile-recipe.component.html',
-  styleUrl: './profile-recipe.component.scss'
+  styleUrls: ['./profile-recipe.component.scss']
 })
 export class ProfileRecipeComponent implements OnInit {
-  count : number | undefined;
-  recipes : any | undefined;
+  count = 0;
+  recipes: Recipe[] | undefined; 
+  userId: string | null;
+
+  constructor(private recetteService: RecetteService, private authService: UserService) {
+    this.userId = this.authService.getCustomerId();
+  }
 
   ngOnInit(): void {
-    this.count = 0;
+    if (this.userId) {
+      this.loadRecipes();
+    } else {
+      console.error('User ID is null');
+    }
+  }
 
-    this.recipes = [
-      {id : 1, name : "Faire une salade", detail : "Petit déjeuner", date : "12/03/2024"},
-      {id : 2, name : "Faire une salade", detail : "Petit déjeuner", date : "12/03/2024"},
-      {id : 3, name : "Faire une salade", detail : "Petit déjeuner", date : "12/03/2024"},
-      {id : 4, name : "Faire une salade", detail : "Petit déjeuner", date : "12/03/2024"},
-      {id : 5, name : "Faire une salade", detail : "Petit déjeuner", date : "12/03/2024"},
-    ]
+  loadRecipes() {
+    if (this.userId) {
+      this.recetteService.getRecettes(this.userId).then(recipes => {
+        this.recipes = recipes;
+        this.count = recipes.length;
+      }).catch(error => console.error('Erreur lors du chargement des recettes', error));
+    } else {
+      console.error('Cannot load recipes: User ID is null');
+    }
   }
 }

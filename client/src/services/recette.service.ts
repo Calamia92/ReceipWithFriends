@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
-// Recette service
-
 interface Recette {
   userId: string;
   nom: string;
@@ -21,11 +18,10 @@ interface Recette {
 export class RecetteService {
   private apiUrl = 'http://localhost:8088';
 
-  getRecettes() {
-    return fetch(`${this.apiUrl}/api/recipes`)
-    .then(response => response.json());
+  getRecettes(userId: string) {
+    return fetch(`${this.apiUrl}/api/recipes?userId=${userId}`)
+      .then(response => response.json());
   }
-
 
   constructor() { }
 }
