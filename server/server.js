@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 
 // Import routes
 const recipeRoutes = require('./routes/recipes.routes');
@@ -15,6 +16,7 @@ const app = express();
 
 
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -27,6 +29,19 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 
 
+const verifyToken = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).send('Vous n\'etes pas connecté');
+  
+    try {
+      const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+      req.user = verified;
+      next();
+    } catch (err) {
+      res.status(400).send('Invalid Token');
+    }
+  };
+  
 
 //Routes
 app.use('/api/user', userRoutes);
@@ -34,9 +49,9 @@ app.use('/api/user', userRoutes);
 
 
 // Use routes
-app.use('/api/recipes', recipeRoutes);
-app.use('/api/comments', commentRoutes);
-app.use('/api/favorites', favoriteRoutes);
+app.use('/api/recipes',verifyToken, recipeRoutes);
+app.use('/api/comments',verifyToken, commentRoutes);
+app.use('/api/favorites',verifyToken, favoriteRoutes);
 
 
 

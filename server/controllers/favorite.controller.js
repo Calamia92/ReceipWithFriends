@@ -1,5 +1,7 @@
 const FavoriteModel = require('../models/Favorite');
 const ObjectID = require('mongoose').Types.ObjectId;
+const jwt = require('jsonwebtoken');
+const express = require('express');
 
 module.exports.createFavorite = async (req, res) => {
   const newFavorite = new FavoriteModel({
@@ -27,3 +29,4 @@ module.exports.deleteFavorite = async (req, res) => {
     res.status(500).send(err);
   }
 };
+
