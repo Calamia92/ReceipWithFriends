@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+const jwt = require('jsonwebtoken');
 
 // Import routes
 const recipeRoutes = require('./routes/recipes.routes');
@@ -14,7 +14,8 @@ require('./config/db');
 const { checkUser, requireAuth } = require('./middleware/auth.middleware');
 const app = express();
 
-app.use(cors());
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,11 +27,31 @@ app.get('/jwtid', requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
 
-// Routes
+
+
+const verifyToken = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).send('Vous n\'etes pas connecté');
+  
+    try {
+      const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+      req.user = verified;
+      next();
+    } catch (err) {
+      res.status(400).send('Invalid Token');
+    }
+  };
+  
+
+//Routes
 app.use('/api/user', userRoutes);
-app.use('/api/recipes', recipeRoutes);
-app.use('/api/comments', commentRoutes);
-app.use('/api/favorites', favoriteRoutes);
+
+
+
+// Use routes
+app.use('/api/recipes',verifyToken, recipeRoutes);
+app.use('/api/comments',verifyToken, commentRoutes);
+app.use('/api/favorites',verifyToken, favoriteRoutes);
 
 // Server
 app.listen(process.env.PORT, () => {
