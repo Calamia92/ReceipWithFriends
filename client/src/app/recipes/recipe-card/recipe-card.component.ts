@@ -19,7 +19,6 @@ export class RecipeCardComponent implements OnInit {
   imageAlt : string | undefined;
 
   ngOnInit(): void {
-    console.log(this.image);
     this.imageAlt = `image_${this.name}`;
   }
   

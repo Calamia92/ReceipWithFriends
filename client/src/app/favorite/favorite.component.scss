@@ -1,0 +1,31 @@
+.favorites {
+  padding: 0 40px;
+}
+
+.favotite-title {
+  padding: 20px;
+  text-align: center;
+}
+
+.favorites-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.favorites-empty {
+  border: 2px solid #345333;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorites-empty i {
+  font-size: 30px;
+  color: rgb(140, 20, 20);
+}
+.favorites-empty p {
+  font-size: 25px;
+  margin: 0 10px;
+}
