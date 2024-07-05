@@ -1,5 +1,6 @@
 ### README du projet en Angular et Node.js
 #### Description
+ReceipWithFriends est une application web qui permet aux utilisateurs de créer, partager et gérer leurs recettes préférées. Les utilisateurs peuvent commenter les recettes et les marquer comme favoris.
 
 #### Environnement de développement
 - **Angular CLI:** 18.0.7
