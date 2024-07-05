@@ -9,10 +9,10 @@ ReceipWithFriends est une application web qui permet aux utilisateurs de créer,
 - **Système d'exploitation:** Windows 10 x64
 
 #### Équipe du projet
-- **Sarah:** Développeuse back-end
-- **Nahida:** Développeuse back-end
-- **Yassine:** Développeur back-end
-- **Abondance:** Développeur front-end
+- **Sarah:** Développeuse back-end et contributions en front-end
+- **Nahida:** Développeuse back-end et contributions en front-end
+- **Yassine:** Développeur back-end et contributions en front-end
+- **Abondance:** Développeur majoritaire front-end et styles
 - **Boubaker:** Gestion de Git, base de données et contributions en front-end
 
 #### Structure du projet
