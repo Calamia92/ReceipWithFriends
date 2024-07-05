@@ -23,9 +23,9 @@ router.post("/login", authController.signIn);
 router.get("/logout", authController.logout);
 
 // user DB
-router.get('/',verifyToken, userController.getAllUsers);
-router.get('/:id',verifyToken, userController.userInfo);
-router.put('/:id',verifyToken, userController.updateUser);
-router.delete('/:id',verifyToken, userController.deleteUser);
+router.get('/',/*verifyToken;*/ userController.getAllUsers);
+router.get('/:id',/*verifyToken;*/ userController.userInfo);
+router.put('/:id',/*verifyToken;*/ userController.updateUser);
+router.delete('/:id',/*verifyToken;*/ userController.deleteUser);
 
 module.exports = router; 

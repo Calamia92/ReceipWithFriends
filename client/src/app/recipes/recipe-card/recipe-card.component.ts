@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgOptimizedImage, NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RecetteService } from '../../../services/recette.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -14,13 +15,17 @@ import { RouterLink } from '@angular/router';
 })
 export class RecipeCardComponent implements OnInit {
   @Input() name : string | undefined;
-  @Input() id : string | undefined;
   @Input() image : string | undefined;
   isFavorite : Boolean | undefined;
   imageAlt : string | undefined;
 
+  constructor(private recetteService: RecetteService) {}
+
+  recipes : any[] = [];
+
   ngOnInit(): void {
-    this.imageAlt = `image_${this.name}`;
+    this.recetteService.getRecettes()
+    .then(recipes => this.recipes = recipes);
   }
   
   onAddFavorite(name : any){

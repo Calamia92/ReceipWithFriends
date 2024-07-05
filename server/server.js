@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 // Import routes
 const recipeRoutes = require('./routes/recipes.routes');
@@ -11,7 +12,12 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config({ path: './config/.env' });
 require('./config/db');
 
+<<<<<<< HEAD
 const { checkUser, requireAuth } = require('./middleware/auth.middleware');
+=======
+
+const {checkUser, requireAuth} = require('./middleware/auth.middleware');
+>>>>>>> boubaker
 const app = express();
 
 
@@ -36,6 +42,7 @@ const verifyToken = (req, res, next) => {
     try {
       const verified = jwt.verify(token, process.env.TOKEN_SECRET);
       req.user = verified;
+      console.log(verified);
       next();
     } catch (err) {
       res.status(400).send('Invalid Token');
@@ -44,14 +51,16 @@ const verifyToken = (req, res, next) => {
   
 
 //Routes
+
+app.use(cors());
 app.use('/api/user', userRoutes);
 
 
 
 // Use routes
-app.use('/api/recipes',verifyToken, recipeRoutes);
-app.use('/api/comments',verifyToken, commentRoutes);
-app.use('/api/favorites',verifyToken, favoriteRoutes);
+app.use('/api/recipes',/*verifyToken;*/ recipeRoutes);
+app.use('/api/comments',/*verifyToken;*/ commentRoutes);
+app.use('/api/favorites',/*verifyToken;*/ favoriteRoutes);
 
 // Server
 app.listen(process.env.PORT, () => {
